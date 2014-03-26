@@ -61,7 +61,7 @@ For more information, you should refer to our [Webhooks Documentation][1].
 Issues
 ======
 
-Please report issues and ask questions on the project's Github repository.
+Please report issues and ask questions on the project's Github repository, in the [issues section][2].
 
 
 License
@@ -72,3 +72,4 @@ View `LICENSE`.
 
   [0]: http://www.pip-installer.org/
   [1]: https://scalr-wiki.atlassian.net/wiki/x/FYBe
+  [2]: https://github.com/scalr-tutorials/webhooks-python-example/issues
