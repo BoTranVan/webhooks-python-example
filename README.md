@@ -47,9 +47,17 @@ The following variables are used:
 Running the app
 ---------------
 
-Once you have installed and configured the app, you can launch it by running `honcho start web`.
+Once you have installed and configured the app, you can launch it by running `honcho start web`. The app will listen on
+port `5000` by default.
 
-The app will listen on port `5000` by default.
+If you're launching the app on an instance, you'll probably want to daemonize it. To do so, navigate to the app
+directory, and then run:
+
+    gunicorn --daemon --bind 0.0.0.0:5000 app:app
+
+
+For further information, you should check the [Gunicorn documentation][3].
+
 
 
 Further reading
@@ -73,3 +81,4 @@ View `LICENSE`.
   [0]: http://www.pip-installer.org/
   [1]: https://scalr-wiki.atlassian.net/wiki/x/FYBe
   [2]: https://github.com/scalr-tutorials/webhooks-python-example/issues
+  [3]: http://gunicorn-docs.readthedocs.org/en/latest/configure.html
