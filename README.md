@@ -55,6 +55,12 @@ directory, and then run:
 
     gunicorn --daemon --bind 0.0.0.0:5000 app:app
 
+Bear in mind that `gunicorn` will not read your `.env` file, so you have to pass the `VALIDATION_TOKEN` and
+`SIGNING_KEY` environment variables through other means.
+
+One option is:
+
+    VALIDATION_TOKEN=xxxx SIGNING_KEY=yyyy gunicorn --daemon --bind 0.0.0.0:5000 app:app
 
 For further information, you should check the [Gunicorn documentation][3].
 
