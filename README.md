@@ -5,7 +5,6 @@ This Python web application is meant to serve as a base for you to build a Scalr
 
 The application integrates the following:
 
-  + Endpoint validation
   + Signature validation
   + Request parsing
 
@@ -33,14 +32,13 @@ To install the app's dependencies, do the following:
 Configuring the app
 -------------------
 
-The application is configured by passing its configuration through environment variables.
+The application is configured by passing its configuration through environment variables (i.e. it's a [12-factor app][10]).
 
 If you are using Honcho or Foreman (as suggested below), you can simply input those environment variables in the `.env`
 file.
 
-The following variables are used:
+The following environment variable is used:
 
-  + `VALIDATION_TOKEN`: This should be the validation token provided by Scalr, used to validate your endpoint.
   + `SIGNING_KEY`: This should be the signing key provided by Scalr, used to authenticate requests.
 
 
@@ -55,12 +53,12 @@ directory, and then run:
 
     gunicorn --daemon --bind 0.0.0.0:5000 app:app
 
-Bear in mind that `gunicorn` will not read your `.env` file, so you have to pass the `VALIDATION_TOKEN` and
-`SIGNING_KEY` environment variables through other means.
+Bear in mind that `gunicorn` will not read your `.env` file, so you have to pass the `SIGNING_KEY` environment variable
+through other means.
 
 One option is:
 
-    VALIDATION_TOKEN=xxxx SIGNING_KEY=yyyy gunicorn --daemon --bind 0.0.0.0:5000 app:app
+    SIGNING_KEY=yyyy gunicorn --daemon --bind 0.0.0.0:5000 app:app
 
 For further information, you should check the [Gunicorn documentation][3].
 
@@ -85,6 +83,7 @@ View `LICENSE`.
 
 
   [0]: http://www.pip-installer.org/
+  [10]: http://12factor.net/
   [1]: https://scalr-wiki.atlassian.net/wiki/x/FYBe
   [2]: https://github.com/scalr-tutorials/webhooks-python-example/issues
   [3]: http://gunicorn-docs.readthedocs.org/en/latest/configure.html

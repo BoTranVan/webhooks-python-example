@@ -9,13 +9,11 @@ import util
 
 
 SIGNING_KEY_ENV_VAR = "SIGNING_KEY"
-VALIDATION_TOKEN_ENV_VAR = "VALIDATION_TOKEN"
 
 
 app = flask.Flask(__name__)
 app.config.update(
     signing_key=os.environ.get(SIGNING_KEY_ENV_VAR, ""),
-    validation_token=os.environ.get(VALIDATION_TOKEN_ENV_VAR, "")
 )
 
 # Logging configuration
@@ -73,14 +71,6 @@ def validate_json_payload():
         return
     if flask.request.json is None:
         return flask.Response(status=400)
-
-
-@app.after_request
-def add_webhook_token(response):
-    validation_token = app.config.get("validation_token")
-    if validation_token is not None:
-        response.headers["X-Validation-Token"] = validation_token
-    return response
 
 
 if __name__ == '__main__':
